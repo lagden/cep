@@ -4,10 +4,10 @@
   "description": "Busca por CEP diretamente da API dos Correios",
   "keywords": [
     "cep",
-    "lib",
-    "search",
-    "zipcode",
-    "brasil"
+    "busca",
+    "consulta",
+    "correios",
+    "lib"
   ],
   "bug": {
     "url": "https://github.com/lagden/cep/issues",
