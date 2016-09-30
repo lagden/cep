@@ -1,3 +1,11 @@
+<h1 align="center">
+  <br>
+  <img src="https://cdn.rawgit.com/lagden/cep/master/cep.svg" alt="CEP" width="300">
+  <br>
+  <br>
+  <br>
+</h1>
+
 # CEP
 [![NPM version][npm-img]][npm]
 [![Build Status][ci-img]][ci]
