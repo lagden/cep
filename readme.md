@@ -16,7 +16,8 @@
 [devDep-img]:    https://david-dm.org/lagden/cep/dev-status.svg
 [devDep]:        https://david-dm.org/lagden/cep#info=devDependencies
 
-Busca por CEP diretamente da API dos Correios
+Busca por CEP diretamente da API dos Correios  
+Inspirado nesse projeto feito em Ruby: https://github.com/prodis/correios-cep
 
 
 ## Instalação
@@ -42,8 +43,8 @@ consulta('09715-295')
 #### consulta(cep)
 
 Nome        | Tipo                 | Requerido | Default           | Descrição
------------ | -------------------- | --------- | ----------------- | ------------
-cep         | `string` ou `number` | sim       |                   | CEP para a consulta
+----------- | -------------------- |:---------:|:-----------------:| ------------
+cep         | `string` ou `number` | sim       | -                 | CEP para a consulta
 
 
 ## License
