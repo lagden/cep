@@ -1,0 +1,53 @@
+{
+  "name": "lagden-cep",
+  "version": "1.0.0",
+  "description": "Busca por CEP diretamente da API dos Correios",
+  "keywords": [
+    "cep",
+    "lib",
+    "search",
+    "zipcode",
+    "brasil"
+  ],
+  "bug": {
+    "url": "https://github.com/lagden/cep/issues",
+    "email": "lagden@gmail.com"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Thiago Lagden",
+    "email": "lagden@gmail.com",
+    "url": "http://lagden.in"
+  },
+  "repository": "lagden/cep",
+  "scripts": {
+    "report": "nyc report --reporter=html",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "pretest": "xo",
+    "test": "nyc ava"
+  },
+  "dependencies": {
+    "pify": "2.3.0",
+    "soap": "0.17.0"
+  },
+  "devDependencies": {
+    "ava": "0.16.0",
+    "coveralls": "2.11.14",
+    "nyc": "8.3.0",
+    "xo": "0.16.0"
+  },
+  "engines": {
+    "node": ">=5.0.0"
+  },
+  "xo": {
+    "envs": [
+      "node"
+    ]
+  },
+  "main": "index.js",
+  "files": [
+    "lib",
+    "license",
+    "readme.md"
+  ]
+}

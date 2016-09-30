@@ -1,0 +1,36 @@
+node_modules
+coverage
+.nyc_output
+.coveralls.yml
+
+# Others
+cgi-bin
+error_log
+thumbs.db
+.DS_Store
+.*.swp
+*.tmproj
+*.mwb
+*.mwb.bak
+*.sublime-*
+.arch-params
+.bzr
+_darcs
+.hg
+.monotone
+.svn
+.project
+
+# Node
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+
+pids
+logs
+results
