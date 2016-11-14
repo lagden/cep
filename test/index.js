@@ -1,44 +1,38 @@
-'use strict';
+'use strict'
 
-import test from 'ava';
-import cep from '../index';
+import test from 'ava'
+import cep from '../index'
 
-test.cb('cep', t => {
-	t.plan(2);
-	cep('09715-295')
-		.then(r => {
-			t.true(r.success);
-			t.is(r.end, 'Rua Primo Modolin');
-			t.end();
-		});
-});
+test('cep', async t => {
+	const r = await cep('09715-295')
+	t.true(r.success)
+	t.is(r.status, 200)
+	t.is(r.end, 'Rua Primo Modolin')
+})
 
-test.cb('number', t => {
-	t.plan(2);
-	cep(70165900)
-		.then(r => {
-			t.true(r.success);
-			t.is(r.end, 'Praça dos Três Poderes');
-			t.end();
-		});
-});
+test('number', async t => {
+	const r = await cep(70165900)
+	t.true(r.success)
+	t.is(r.status, 200)
+	t.is(r.end, 'Praça dos Três Poderes')
+})
 
-test.cb('not found', t => {
-	t.plan(2);
-	cep('00000-000')
-		.catch(err => {
-			t.false(err.success);
-			t.is(err.message, 'CEP não encontrado');
-			t.end();
-		});
-});
+test('not found', async t => {
+	try {
+		await cep('00000-000')
+	} catch (err) {
+		t.false(err.success)
+		t.is(err.status, 404)
+		t.is(err.message, 'CEP não encontrado')
+	}
+})
 
-test.cb('invalid', t => {
-	t.plan(2);
-	cep('0000000')
-		.catch(err => {
-			t.false(err.success);
-			t.is(err.message, 'CEP deve conter 8 dígitos');
-			t.end();
-		});
-});
+test('invalid', async t => {
+	try {
+		await cep('1234567')
+	} catch (err) {
+		t.false(err.success)
+		t.is(err.status, 400)
+		t.is(err.message, 'CEP deve conter 8 dígitos')
+	}
+})

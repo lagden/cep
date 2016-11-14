@@ -1,9 +1,9 @@
-'use strict';
+'use strict'
 
-const ws = require('./lib/ws');
+const ws = require('./lib/ws')
 
 function consulta(cep) {
-	return ws('consultaCEP', {cep});
+	return ws('consultaCEP', {cep})
 }
 
-module.exports = consulta;
+module.exports = consulta
