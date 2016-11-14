@@ -1,6 +1,6 @@
 {
   "name": "lagden-cep",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Busca por CEP diretamente da API dos Correios",
   "keywords": [
     "cep",
@@ -44,6 +44,9 @@
       "node"
     ],
     "semicolon": false
+  },
+  "ava": {
+    "timeout": "30s"
   },
   "main": "index.js",
   "files": [
