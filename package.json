@@ -27,14 +27,14 @@
     "test": "nyc ava"
   },
   "dependencies": {
-    "pify": "2.3.0",
-    "soap": "0.17.0"
+    "pify": "3.0.0",
+    "soap": "0.21.0"
   },
   "devDependencies": {
-    "ava": "0.16.0",
-    "coveralls": "2.11.15",
-    "nyc": "8.4.0",
-    "xo": "0.17.1"
+    "ava": "0.22.0",
+    "coveralls": "2.13.1",
+    "nyc": "11.1.0",
+    "xo": "0.18.2"
   },
   "engines": {
     "node": ">=5.0.0"
