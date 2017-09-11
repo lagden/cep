@@ -1,10 +1,10 @@
-<h1 align="center">
+<h3 align="center">
   <br>
   <img src="https://cdn.rawgit.com/lagden/cep/master/cep.svg" alt="CEP" width="300">
   <br>
   <br>
   <br>
-</h1>
+</h3>
 
 # CEP
 [![NPM version][npm-img]][npm]
