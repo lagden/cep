@@ -1,9 +1,9 @@
 'use strict'
 
-const ws = require('./lib/ws')
+const service = require('./lib/service')
 
 function consulta(cep) {
-	return ws('consultaCEP', {cep})
+	return service('consultaCEP', {cep})
 }
 
 module.exports = consulta

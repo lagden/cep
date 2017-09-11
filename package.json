@@ -1,6 +1,6 @@
 {
   "name": "lagden-cep",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Busca por CEP diretamente da API dos Correios",
   "keywords": [
     "cep",
@@ -24,26 +24,34 @@
     "report": "nyc report --reporter=html",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "pretest": "xo",
-    "test": "nyc ava"
+    "test": "nyc ava --serial"
   },
   "dependencies": {
-    "pify": "2.3.0",
-    "soap": "0.17.0"
+    "soap": "0.21.0"
   },
   "devDependencies": {
-    "ava": "0.16.0",
-    "coveralls": "2.11.15",
-    "nyc": "8.4.0",
-    "xo": "0.17.1"
+    "ava": "0.22.0",
+    "coveralls": "2.13.1",
+    "nyc": "11.2.1",
+    "xo": "0.18.2"
   },
   "engines": {
-    "node": ">=5.0.0"
+    "node": ">=6.0.0"
   },
   "xo": {
     "envs": [
       "node"
     ],
-    "semicolon": false
+    "semicolon": false,
+    "rules": {
+      "camelcase": [
+        "error",
+        {
+          "properties": "never"
+        }
+      ],
+      "capitalized-comments": 0
+    }
   },
   "ava": {
     "timeout": "30s"
