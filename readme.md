@@ -47,11 +47,11 @@ $ npm i -S lagden-cep
 ## Uso
 
 ```js
-const consulta = require('lagden-cep');
-consulta('09715-295')
-	.then(r => {
-		console.log(r.end); // Rua Primo Modolin
-	});
+const consulta = require('lagden-cep')
+
+consulta('09715-295').then(r => {
+  console.log(r.end) // Rua Primo Modolin
+})
 ```
 
 
