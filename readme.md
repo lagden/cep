@@ -61,7 +61,7 @@ consulta('09715-295')
 
 Nome        | Tipo                 | Requerido | Default           | Descrição
 ----------- | -------------------- |:---------:|:-----------------:| ------------
-cep         | `string` ou `number` | sim       | -                 | CEP para a consulta
+cep         | string               | sim       | -                 | CEP para a consulta
 
 
 ## License
