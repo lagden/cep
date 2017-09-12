@@ -34,7 +34,7 @@
 [greenkeeper]:     https://greenkeeper.io/
 
 Busca por CEP diretamente da API dos Correios  
-Inspirado nesse projeto feito em Ruby: https://github.com/prodis/correios-cep
+Inspirado [nesse](https://github.com/prodis/correios-cep) projeto feito em Ruby
 
 
 ## Instalação
