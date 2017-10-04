@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "pify": "3.0.0",
-    "soap": "0.21.0"
+    "soap": "0.22.0"
   },
   "devDependencies": {
     "ava": "0.22.0",
