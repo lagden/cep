@@ -33,7 +33,7 @@
   "devDependencies": {
     "ava": "0.23.0",
     "coveralls": "2.13.2",
-    "nyc": "11.1.0",
+    "nyc": "11.3.0",
     "xo": "0.18.2"
   },
   "engines": {
