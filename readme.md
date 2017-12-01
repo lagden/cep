@@ -18,8 +18,8 @@
 [![Greenkeeper badge][greenkeeper-img]][greenkeeper]
 
 
-[npm-img]:         https://img.shields.io/npm/v/lagden-cep.svg
-[npm]:             https://www.npmjs.com/package/lagden-cep
+[npm-img]:         https://img.shields.io/npm/v/@tadashi/cep.svg
+[npm]:             https://www.npmjs.com/package/@tadashi/cep
 [ci-img]:          https://travis-ci.org/lagden/cep.svg
 [ci]:              https://travis-ci.org/lagden/cep
 [coveralls-img]:   https://coveralls.io/repos/github/lagden/cep/badge.svg?branch=master
@@ -32,6 +32,7 @@
 [xo]:              https://github.com/sindresorhus/xo
 [greenkeeper-img]: https://badges.greenkeeper.io/lagden/koa-error.svg
 [greenkeeper]:     https://greenkeeper.io/
+
 
 Busca por CEP diretamente da API dos Correios  
 Inspirado [nesse](https://github.com/prodis/correios-cep) projeto feito em Ruby
