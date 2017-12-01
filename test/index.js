@@ -1,7 +1,6 @@
 'use strict'
 
 import test from 'ava'
-// import manageWifi from 'manage-wifi'
 import cep from '../index'
 
 test('cep', async t => {
@@ -37,15 +36,3 @@ test('invalid', async t => {
 		t.is(err.message, 'CEP deve conter 8 dígitos')
 	}
 })
-
-// test('500', async t => {
-// 	try {
-// 		await manageWifi.off()
-// 		await cep('09715-295')
-// 	} catch (err) {
-// 		t.false(err.success)
-// 		t.is(err.status, 500)
-// 	} finally {
-// 		await manageWifi.on()
-// 	}
-// })

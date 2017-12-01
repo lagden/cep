@@ -1,6 +1,6 @@
 {
-  "name": "lagden-cep",
-  "version": "1.2.0",
+  "name": "@tadashi/cep",
+  "version": "1.0.0",
   "description": "Busca por CEP diretamente da API dos Correios",
   "keywords": [
     "cep",
@@ -26,17 +26,8 @@
     "pretest": "xo",
     "test": "nyc ava --serial"
   },
-  "dependencies": {
-    "soap": "0.21.0"
-  },
-  "devDependencies": {
-    "ava": "0.22.0",
-    "coveralls": "2.13.1",
-    "nyc": "11.2.1",
-    "xo": "0.18.2"
-  },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=8.9.1"
   },
   "xo": {
     "envs": [
@@ -61,5 +52,14 @@
     "lib",
     "license",
     "readme.md"
-  ]
+  ],
+  "dependencies": {
+    "soap": "0.23.0"
+  },
+  "devDependencies": {
+    "ava": "0.24.0",
+    "coveralls": "3.0.0",
+    "nyc": "11.3.0",
+    "xo": "0.18.2"
+  }
 }

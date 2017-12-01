@@ -31,14 +31,14 @@ Inspirado nesse projeto feito em Ruby: https://github.com/prodis/correios-cep
 ## Instalação
 
 ```
-$ npm i -S lagden-cep
+$ npm i -S @tadashi/cep
 ```
 
 
 ## Uso
 
 ```js
-const consulta = require('lagden-cep');
+const consulta = require('@tadashi/cep');
 consulta('09715-295')
 	.then(r => {
 		console.log(r.end); // Rua Primo Modolin
@@ -52,7 +52,7 @@ consulta('09715-295')
 
 Nome        | Tipo                 | Requerido | Default           | Descrição
 ----------- | -------------------- |:---------:|:-----------------:| ------------
-cep         | `string` ou `number` | sim       | -                 | CEP para a consulta
+cep         | string \| number     | sim       | -                 | CEP para a consulta
 
 
 ## License
