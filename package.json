@@ -1,6 +1,6 @@
 {
   "name": "@tadashi/cep",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Busca por CEP diretamente da API dos Correios",
   "keywords": [
     "cep",
