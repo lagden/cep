@@ -3,14 +3,13 @@ LABEL maintainer="docker@lagden.in"
 
 ARG npm_cmd="npm i --progress=false --quiet --production"
 
-ENV PORT=$port
 ENV HOME=/home/node
-ENV LIB=$HOME/lib
+ENV APP=$HOME/app
 
-RUN mkdir $LIB
-COPY . $LIB
+RUN mkdir $APP
+COPY . $APP
 RUN chown -R node:node $HOME
 
 USER node
-WORKDIR $LIB
+WORKDIR $APP
 RUN $npm_cmd

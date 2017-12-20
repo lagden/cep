@@ -24,7 +24,7 @@
     "report": "nyc report --reporter=html",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "pretest": "xo",
-    "test": "nyc ava --serial"
+    "test": "nyc ava --serial -t"
   },
   "engines": {
     "node": ">=8.9.1"

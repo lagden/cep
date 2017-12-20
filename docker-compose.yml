@@ -1,18 +1,13 @@
-version: '3'
+version: '3.4'
 services:
   test:
     build:
       context: ./
       args:
         npm_cmd: "npm i --progress=false --quiet"
+    image: cep:test
     command: ["npm", "test"]
     environment:
       - NODE_ENV=test
     volumes:
-      - ./test:/home/node/lib/test
-
-## to run
-# docker-compose -f docker-compose.test.yml run test
-
-## to build
-# docker-compose -f docker-compose.test.yml up --build -d
+      - ./test:/home/node/app/test

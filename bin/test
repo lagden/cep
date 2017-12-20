@@ -4,35 +4,29 @@ DIR="$( cd -P "$( dirname "$0" )" && pwd )"
 cd $DIR
 cd ..
 
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-NC='\033[0m'
-NAMESPACE='ceplib'
-CONTAINER="${NAMESPACE}ci"
+NAMESPACE='cep'
 
-_cleanup() {
-	docker-compose -f docker-compose.test.yml down --volumes > /dev/null 2>&1
-	docker rm $(docker ps --all --quiet --filter="status=exited") > /dev/null 2>&1
-	docker rmi $(docker images -f dangling=true -q) > /dev/null 2>&1
+abort() {
+	printf "\n  \033[31mError: $@\033[0m\n\n" && exit 1
 }
 
-trap '_cleanup; printf "${RED}Tests Failed For Unexpected Reasons${NC}\n"; exit 1' HUP INT QUIT PIPE TERM SIGINT SIGTERM
+ok() {
+	printf "\n  \033[32mOk: $@\033[0m\n\n"
+}
 
-docker-compose -f docker-compose.test.yml -p $CONTAINER up -d
-if test $? -ne 0; then
-	printf "${RED}Docker Compose Failed${NC}\n"
-	exit -1
-fi
+_cleanup() {
+	docker-compose down --volumes > /dev/null 2>&1
+	docker stop $(docker ps --all --quiet) > /dev/null 2>&1
+	docker rm $(docker ps --all --quiet --filter="status=exited") > /dev/null 2>&1
+	docker rmi $(docker images -f "dangling=true" -q) > /dev/null 2>&1
+}
 
-TEST_EXIT_CODE=`docker wait ${CONTAINER}_test_1`
-EXIT_CODE=${TEST_EXIT_CODE:-default 1}
-docker logs "${CONTAINER}_test_1"
+trap '_cleanup; abort "Tests Failed For Unexpected Reasons"' HUP INT QUIT PIPE TERM SIGINT SIGTERM
 
-if test $EXIT_CODE -ne 0; then
-	printf "${RED}Tests Failed${NC}\n"
-else
-	printf "${GREEN}Tests Passed${NC}\n"
-fi
+docker-compose -p ${NAMESPACE} up $1 test
+TEST_EXIT_CODE=`docker inspect ${NAMESPACE}_test_1 --format='{{.State.ExitCode}}'`
+
+test $TEST_EXIT_CODE -ne 0 && abort "Test FAIL" || ok "Test PASS"
 
 _cleanup
 
