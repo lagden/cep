@@ -15,7 +15,7 @@ ok() {
 }
 
 _cleanup() {
-	docker-compose down --volumes > /dev/null 2>&1
+	docker-compose down --volumes --remove-orphans > /dev/null 2>&1
 	docker stop $(docker ps --all --quiet) > /dev/null 2>&1
 	docker rm $(docker ps --all --quiet --filter="status=exited") > /dev/null 2>&1
 	docker rmi $(docker images -f "dangling=true" -q) > /dev/null 2>&1
