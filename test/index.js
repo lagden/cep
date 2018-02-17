@@ -1,7 +1,7 @@
 'use strict'
 
 import test from 'ava'
-import cep from '../index'
+import cep from '../.'
 
 test('cep', async t => {
 	const r = await cep('09715-295')
