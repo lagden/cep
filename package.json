@@ -59,7 +59,7 @@
   "devDependencies": {
     "ava": "0.25.0",
     "coveralls": "3.0.0",
-    "nyc": "11.4.1",
+    "nyc": "11.6.0",
     "xo": "0.20.2"
   }
 }
