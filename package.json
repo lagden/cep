@@ -54,7 +54,7 @@
     "readme.md"
   ],
   "dependencies": {
-    "soap": "0.23.0"
+    "soap": "0.24.0"
   },
   "devDependencies": {
     "ava": "0.25.0",
