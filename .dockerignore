@@ -1,9 +1,4 @@
 .nyc_output
-.git
-bin
-coverage
-node_modules
-test
 .DS_Store
 .dockerignore
 .editorconfig
@@ -11,6 +6,10 @@ test
 .git*
 .rsync*
 .travis.yml
+bin
+coverage
+node_modules
+test
 docker-compose*.yml
 Dockerfile*
 package-lock.json

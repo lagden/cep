@@ -1,13 +1,14 @@
-version: '3.4'
+version: '3.6'
 services:
   test:
     build:
       context: ./
       args:
         npm_cmd: "npm i --progress=false --quiet"
-    image: cep:test
+    container_name: test
     command: ["npm", "test"]
     environment:
       - NODE_ENV=test
     volumes:
       - ./test:/home/node/app/test
+      - ./lib:/home/node/app/lib
