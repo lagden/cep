@@ -23,7 +23,8 @@
   "scripts": {
     "pretest": "xo",
     "test": "NODE_ENV=test ava --serial",
-    "test-travis": "NODE_ENV=test nyc ava --serial",
+    "preci": "npm run pretest",
+    "ci": "NODE_ENV=test nyc ava --serial",
     "coverage": "NODE_ENV=test nyc report --reporter=text-lcov | coveralls"
   },
   "engines": {
