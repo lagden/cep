@@ -1,21 +1,27 @@
-FROM node:8.9.1-alpine
+FROM node:10.11-alpine
 LABEL maintainer="docker@lagden.in"
 
-ARG npm_cmd="npm i --progress=false --quiet"
-# ARG port=3000
+ARG NODE_ENV=production
+ARG PORT=3000
+ARG BASE=/home/node
 
-# ENV NODE_ENV="production"
-# ENV PORT=$port
-ENV HOME=/home/node
-ENV APP=$HOME/app
-ENV DOCKER_MODE=1
+ENV NODE_ENV=$NODE_ENV
+ENV PORT=$PORT
+ENV BASE=$BASE
+ENV APP=$BASE/app
+ENV NPM_CMD="npm i --progress=false --quiet"
 
-RUN mkdir $APP
+EXPOSE $PORT
+
+# Para fazer debug do Node.js utilizando o Chrome
+# EXPOSE 9229
+
+RUN npm i -g npm
+RUN mkdir -p $APP
 COPY . $APP
-RUN chown -R node:node $HOME
+
+WORKDIR $APP
+RUN chown -R node:node $BASE
 
 USER node
-WORKDIR $APP
-RUN $npm_cmd
-
-# EXPOSE $port
+RUN $NPM_CMD

@@ -1,7 +1,8 @@
 'use strict'
 
 import test from 'ava'
-import cep from '../.'
+import cep from '..'
+import faultstring from '../lib/faultstring'
 
 test('cep', async t => {
 	const r = await cep('09715-295')
@@ -20,19 +21,24 @@ test('number', async t => {
 test('not found', async t => {
 	try {
 		await cep('00000-000')
-	} catch (err) {
-		t.false(err.success)
-		t.is(err.status, 404)
-		t.is(err.message, 'CEP não encontrado')
+	} catch (error) {
+		t.false(error.success)
+		t.is(error.status, 404)
+		t.is(error.message, 'CEP não encontrado')
 	}
 })
 
 test('invalid', async t => {
 	try {
 		await cep('1234567')
-	} catch (err) {
-		t.false(err.success)
-		t.is(err.status, 400)
-		t.is(err.message, 'CEP deve conter 8 dígitos')
+	} catch (error) {
+		t.false(error.success)
+		t.is(error.status, 400)
+		t.is(error.message, 'CEP deve conter 8 dígitos')
 	}
+})
+
+test('faultstring', async t => {
+	const _faultstring = faultstring(new Error('faultstring'))
+	t.is(_faultstring, 'faultstring')
 })

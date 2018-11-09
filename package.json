@@ -1,6 +1,6 @@
 {
   "name": "@tadashi/cep",
-  "version": "1.2.2",
+  "version": "1.4.0",
   "description": "Busca por CEP diretamente da API dos Correios",
   "keywords": [
     "cep",
@@ -21,11 +21,9 @@
   },
   "repository": "lagden/cep",
   "scripts": {
+    "report": "nyc report --reporter=text-lcov | coveralls",
     "pretest": "xo",
-    "test": "NODE_ENV=test ava --serial",
-    "preci": "npm run pretest",
-    "ci": "NODE_ENV=test nyc ava --serial",
-    "coverage": "NODE_ENV=test nyc report --reporter=text-lcov | coveralls"
+    "test": "ava"
   },
   "engines": {
     "node": ">=8.9.1"
@@ -55,12 +53,10 @@
     "readme.md"
   ],
   "dependencies": {
-    "soap": "0.24.0"
+    "soap": "0.25.0"
   },
   "devDependencies": {
     "ava": "0.25.0",
-    "coveralls": "3.0.0",
-    "nyc": "11.6.0",
-    "xo": "0.20.3"
+    "xo": "0.23.0"
   }
 }
