@@ -38,7 +38,7 @@ test('invalid', async t => {
 	}
 })
 
-test('faultstring', async t => {
+test('faultstring', t => {
 	const _faultstring = faultstring(new Error('faultstring'))
 	t.is(_faultstring, 'faultstring')
 })

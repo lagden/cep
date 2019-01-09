@@ -1,4 +1,4 @@
-FROM node:10.11-alpine
+FROM node:10-alpine
 LABEL maintainer="docker@lagden.in"
 
 ARG NODE_ENV=production
