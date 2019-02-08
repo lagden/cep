@@ -1,6 +1,6 @@
 {
   "name": "@tadashi/cep",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Busca por CEP diretamente da API dos Correios",
   "keywords": [
     "cep",
@@ -23,7 +23,7 @@
   "scripts": {
     "report": "nyc report --reporter=text-lcov | coveralls",
     "pretest": "xo",
-    "test": "ava"
+    "test": "ava --serial -t"
   },
   "engines": {
     "node": ">=8.9.1"
@@ -34,6 +34,7 @@
     ],
     "semicolon": false,
     "rules": {
+      "padding-line-between-statements": 0,
       "camelcase": [
         "error",
         {
@@ -56,7 +57,7 @@
     "soap": "0.25.0"
   },
   "devDependencies": {
-    "ava": "1.1.0",
-    "xo": "0.23.0"
+    "ava": "1.2.1",
+    "xo": "0.24.0"
   }
 }

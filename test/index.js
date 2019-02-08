@@ -23,8 +23,8 @@ test('not found', async t => {
 		await cep('00000-000')
 	} catch (error) {
 		t.false(error.success)
-		t.is(error.status, 404)
-		t.is(error.message, 'CEP não encontrado')
+		t.is(error.status, 400)
+		t.is(error.message, 'CEP inválido')
 	}
 })
 
@@ -34,7 +34,7 @@ test('invalid', async t => {
 	} catch (error) {
 		t.false(error.success)
 		t.is(error.status, 400)
-		t.is(error.message, 'CEP deve conter 8 dígitos')
+		t.is(error.message, 'CEP inválido')
 	}
 })
 
