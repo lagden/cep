@@ -1,6 +1,6 @@
 {
   "name": "@tadashi/cep",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "Busca por CEP diretamente da API dos Correios",
   "keywords": [
     "cep",
@@ -54,10 +54,10 @@
     "readme.md"
   ],
   "dependencies": {
-    "soap": "0.25.0"
+    "soap": "0.27.1"
   },
   "devDependencies": {
-    "ava": "1.2.1",
+    "ava": "1.4.1",
     "xo": "0.24.0"
   }
 }
