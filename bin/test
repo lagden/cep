@@ -1,9 +1,5 @@
 #!/bin/bash
 
-DIR="$( cd -P "$( dirname "$0" )" && pwd )"
-cd $DIR
-cd ..
-
 abort() {
 	printf "\n  \033[31mError: $@\033[0m\n\n" && exit 1
 }
@@ -13,21 +9,59 @@ ok() {
 }
 
 _cleanup() {
-	docker-compose down --volumes --remove-orphans > /dev/null 2>&1
-	# docker rmi $(docker images --filter=reference='*:test' -q) > /dev/null 2>&1
+	docker-compose -f $@ down --volumes --remove-orphans > /dev/null 2>&1
 }
 
-trap '_cleanup; abort "Tests Failed For Unexpected Reasons"' HUP INT QUIT PIPE TERM SIGINT SIGTERM
+usage() {
+	cat <<-EOF
 
-docker-compose -f docker-compose.dev.yml up $1 --force-recreate test
+  Usage: $0 [-b]
+
+  Options:
+    -b   Build image
+    -h   Show usage
+
+EOF
+exit 0
+}
+
+DIR="$( cd -P "$( dirname "$0" )" && pwd )"
+cd $DIR
+cd ..
+
+CURR_FOLDER=`pwd`
+BUILD=""
+SERVICE="test"
+OPT="test"
+COMPOSE_TEST="${CURR_FOLDER}/docker-compose.test.yml"
+
+trap '_cleanup $COMPOSE_TEST; abort "Tests failed for unexpected reasons"' HUP INT QUIT PIPE TERM SIGINT SIGTERM
+
+while getopts ":b" o
+do
+	case ${o} in
+		b) BUILD="--build" ;;
+		*) usage ;;
+	esac
+done
+
+docker-compose \
+	-f $COMPOSE_TEST \
+	up \
+	--force-recreate \
+	--always-recreate-deps \
+	--abort-on-container-exit \
+	--exit-code-from $SERVICE \
+	--remove-orphans \
+	$BUILD \
+	$SERVICE
+
 if test $? -ne 0; then
-	abort "Docker Compose Failed"
+	_cleanup $COMPOSE_TEST
+	abort "Test FAIL"
 fi
 
-TEST_EXIT_CODE=`docker inspect test --format='{{.State.ExitCode}}'`
+_cleanup $COMPOSE_TEST
+ok "Test PASS"
 
-_cleanup
-
-test $TEST_EXIT_CODE -ne 0 && abort "Test FAIL" || ok "Test PASS"
-
-exit $TEST_EXIT_CODE
+exit 0

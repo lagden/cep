@@ -1,5 +1,7 @@
-FROM node:10-alpine
+FROM node:12.4-alpine
 LABEL maintainer="docker@lagden.in"
+
+RUN apk --update add --no-cache acl
 
 ARG NODE_ENV=production
 ARG PORT=3000
@@ -9,19 +11,14 @@ ENV NODE_ENV=$NODE_ENV
 ENV PORT=$PORT
 ENV BASE=$BASE
 ENV APP=$BASE/app
-ENV NPM_CMD="npm i --progress=false --quiet"
 
 EXPOSE $PORT
 
-# Para fazer debug do Node.js utilizando o Chrome
-# EXPOSE 9229
-
-RUN npm i -g npm
 RUN mkdir -p $APP
 COPY . $APP
 
 WORKDIR $APP
-RUN chown -R node:node $BASE
+RUN setfacl -R -m d:u:node:rwx,u:node:rwX $BASE
 
 USER node
-RUN $NPM_CMD
+RUN npm ci --ignore-scripts

@@ -12,7 +12,6 @@ node_modules
 test
 docker-compose*.yml
 Dockerfile*
-package-lock.json
 README.md
 readme.md
 LICENSE

@@ -1,8 +1,8 @@
 'use strict'
 
 import test from 'ava'
-import cep from '..'
-import faultstring from '../lib/faultstring'
+import cep from '../src'
+import faultstring from '../src/lib/faultstring'
 
 test('cep', async t => {
 	const r = await cep('09715-295')

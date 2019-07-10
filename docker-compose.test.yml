@@ -1,4 +1,4 @@
-version: '3.6'
+version: '3.7'
 services:
   test:
     build:
@@ -12,5 +12,5 @@ services:
     environment:
       - NODE_ENV=test
     volumes:
-      - ./lib:/home/node/app/lib
+      - ./src:/home/node/app/src
       - ./test:/home/node/app/test
