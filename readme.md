@@ -30,7 +30,7 @@
 [devDep]:          https://david-dm.org/lagden/cep#info=devDependencies
 [xo-img]:          https://img.shields.io/badge/code_style-XO-5ed9c7.svg
 [xo]:              https://github.com/sindresorhus/xo
-[greenkeeper-img]: https://badges.greenkeeper.io/owner/repo.svg?style=flat
+[greenkeeper-img]: https://badges.greenkeeper.io/lagden/cep.svg?style=flat
 [greenkeeper]:     https://greenkeeper.io/
 
 
