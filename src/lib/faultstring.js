@@ -4,7 +4,7 @@ function faultstring(_error) {
 	let faultstring
 	try {
 		({root: {Envelope: {Body: {Fault: {faultstring}}}}} = _error)
-	} catch (error) {
+	} catch {
 		faultstring = _error.message
 	}
 	return faultstring

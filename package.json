@@ -1,6 +1,6 @@
 {
   "name": "@tadashi/cep",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "Busca por CEP diretamente da API dos Correios",
   "keywords": [
     "cep",
@@ -16,8 +16,7 @@
   "license": "MIT",
   "author": {
     "name": "Thiago Lagden",
-    "email": "lagden@gmail.com",
-    "url": "http://lagden.in"
+    "email": "lagden@gmail.com"
   },
   "repository": "lagden/cep",
   "scripts": {
@@ -57,7 +56,7 @@
     "soap": "0.29.0"
   },
   "devDependencies": {
-    "ava": "2.3.0",
-    "xo": "0.24.0"
+    "ava": "2.4.0",
+    "xo": "0.25.3"
   }
 }
