@@ -14,12 +14,12 @@ const wsdl = {
 async function service(method, args) {
 	try {
 		const client = await createClientAsync(wsdl.producao)
-		const _res = await client[`${method}Async`](args, {method: 'POST'})
-		// console.log(inspect(_res, false, null, true))
-		const [{return: res}] = _res
-		res.success = true
-		res.status = 200
-		return res
+		const _response = await client[`${method}Async`](args, {method: 'POST'})
+		// console.log(inspect(_response, false, null, true))
+		const [{return: response}] = _response
+		response.success = true
+		response.status = 200
+		return response
 	} catch (error) {
 		const faultstring = _faultstring(error)
 		const r = dict.has(faultstring) && dict.get(faultstring)
