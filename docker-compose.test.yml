@@ -1,16 +1,12 @@
 version: '3.7'
 services:
-  test:
+  app:
     build:
       context: ./
       args:
-        NODE_ENV: test
-        PORT: ${PORT:-3000}
-    image: cep:test
-    container_name: test
+        NODE_ENV: development
+    image: local/cep:test
     command: ["npm", "test"]
-    environment:
-      - NODE_ENV=test
     volumes:
       - ./src:/home/node/app/src
       - ./test:/home/node/app/test

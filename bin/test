@@ -1,49 +1,63 @@
 #!/bin/bash
 
-abort() {
-	printf "\n  \033[31mError: $@\033[0m\n\n" && exit 1
-}
+DIR="$( cd -P "$( dirname "$0" )" && pwd )"
 
-ok() {
-	printf "\n  \033[32mOk: $@\033[0m\n\n"
-}
-
-_cleanup() {
-	docker-compose -f $@ down --volumes --remove-orphans > /dev/null 2>&1
-}
+# Import functions
+. $DIR/_fn
 
 usage() {
 	cat <<-EOF
 
-  Usage: $0 [-b]
+  Usage: $0 [-b] [-s <service>]
 
   Options:
     -b   Build image
+    -s   Docker compose service name
     -h   Show usage
 
 EOF
 exit 0
 }
 
-DIR="$( cd -P "$( dirname "$0" )" && pwd )"
+# Go to project root
 cd $DIR
 cd ..
 
 CURR_FOLDER=`pwd`
 BUILD=""
-SERVICE="test"
+SERVICE="app"
 OPT="test"
 COMPOSE_TEST="${CURR_FOLDER}/docker-compose.test.yml"
 
-trap '_cleanup $COMPOSE_TEST; abort "Tests failed for unexpected reasons"' HUP INT QUIT PIPE TERM SIGINT SIGTERM
+export DOCKERFILE="${CURR_FOLDER}/Dockerfile"
 
-while getopts ":b" o
+_cleanup() {
+	docker-compose \
+		-f $COMPOSE_TEST \
+		down \
+		--volumes \
+		--remove-orphans > /dev/null 2>&1
+}
+
+trap '_cleanup; abort "Tests failed for unexpected reasons"' HUP INT QUIT PIPE TERM SIGINT SIGTERM
+
+while getopts ":bs:" o
 do
 	case ${o} in
 		b) BUILD="--build" ;;
+		s) SERVICE=$OPTARG ;;
 		*) usage ;;
 	esac
 done
+
+# # ENV File
+# ENVFILE="${CURR_FOLDER}/.env-${OPT}"
+# if test ! -e $ENVFILE; then
+# 	abort "Environment file not found"
+# fi
+
+# set -a
+# source $ENVFILE
 
 docker-compose \
 	-f $COMPOSE_TEST \
@@ -57,11 +71,11 @@ docker-compose \
 	$SERVICE
 
 if test $? -ne 0; then
-	_cleanup $COMPOSE_TEST
+	_cleanup
 	abort "Test FAIL"
 fi
 
-_cleanup $COMPOSE_TEST
+_cleanup
 ok "Test PASS"
 
 exit 0

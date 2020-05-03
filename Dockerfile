@@ -1,24 +1,23 @@
-FROM node:12.4-alpine
+# APP DEV
+FROM node:14.0-alpine3.11
 LABEL maintainer="docker@lagden.in"
 
-RUN apk --update add --no-cache acl
-
-ARG NODE_ENV=production
 ARG PORT=3000
-ARG BASE=/home/node
+ARG NODE_ENV="development"
+ARG VERSION="dev"
+ARG BASE="/home/node"
 
-ENV NODE_ENV=$NODE_ENV
 ENV PORT=$PORT
+ENV NODE_ENV=$NODE_ENV
+ENV VERSION=$VERSION
 ENV BASE=$BASE
 ENV APP=$BASE/app
 
-EXPOSE $PORT
+WORKDIR $BASE
+USER node
 
 RUN mkdir -p $APP
 COPY . $APP
 
 WORKDIR $APP
-RUN setfacl -R -m d:u:node:rwx,u:node:rwX $BASE
-
-USER node
 RUN npm ci --ignore-scripts

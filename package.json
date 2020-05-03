@@ -20,9 +20,10 @@
   },
   "repository": "lagden/cep",
   "scripts": {
-    "report": "nyc report --reporter=text-lcov | coveralls",
     "pretest": "xo",
     "test": "ava --serial -t",
+    "precoverage": "npm run pretest",
+    "coverage": "nyc --reporter=text-summary --reporter=lcov ava",
     "snyk-protect": "snyk protect",
     "prepare": "npm run snyk-protect"
   },
@@ -56,11 +57,11 @@
   ],
   "dependencies": {
     "soap": "0.31.0",
-    "snyk": "^1.316.1"
+    "snyk": "1.317.0"
   },
   "devDependencies": {
-    "ava": "3.6.0",
-    "xo": "0.29.0"
+    "ava": "3.8.1",
+    "xo": "0.30.0"
   },
   "snyk": true
 }

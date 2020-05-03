@@ -9,19 +9,19 @@
 # CEP
 
 [![NPM version][npm-img]][npm]
-[![Build Status][ci-img]][ci]
+[![Node.js CI][ci-img]][ci]
 [![Coverage Status][coveralls-img]][coveralls]
 [![Dependency Status][dep-img]][dep]
 [![devDependency Status][devDep-img]][devDep]
 
 [![XO code style][xo-img]][xo]
-[![Greenkeeper badge][greenkeeper-img]][greenkeeper]
+[![Snyk badge][snyk-img]][snyk]
 
 
 [npm-img]:         https://img.shields.io/npm/v/@tadashi/cep.svg
 [npm]:             https://www.npmjs.com/package/@tadashi/cep
-[ci-img]:          https://travis-ci.org/lagden/cep.svg
-[ci]:              https://travis-ci.org/lagden/cep
+[ci-img]:          https://github.com/lagden/cep/workflows/Node.js%20CI/badge.svg
+[ci]:              https://github.com/lagden/cep/actions?query=workflow%3A%22Node.js+CI%22
 [coveralls-img]:   https://coveralls.io/repos/github/lagden/cep/badge.svg?branch=master
 [coveralls]:       https://coveralls.io/github/lagden/cep?branch=master
 [dep-img]:         https://david-dm.org/lagden/cep.svg
@@ -30,8 +30,8 @@
 [devDep]:          https://david-dm.org/lagden/cep#info=devDependencies
 [xo-img]:          https://img.shields.io/badge/code_style-XO-5ed9c7.svg
 [xo]:              https://github.com/sindresorhus/xo
-[greenkeeper-img]: https://badges.greenkeeper.io/lagden/cep.svg?style=flat
-[greenkeeper]:     https://greenkeeper.io/
+[snyk-img]:        https://snyk.io/test/github/lagden/cep/badge.svg
+[snyk]:            https://snyk.io/test/github/lagden/cep
 
 
 Busca por CEP diretamente da API dos Correios  
