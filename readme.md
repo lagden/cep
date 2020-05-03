@@ -34,8 +34,8 @@
 [snyk]:            https://snyk.io/test/github/lagden/cep
 
 
-Busca por CEP diretamente da API dos Correios  
-Inspirado [nesse](https://github.com/prodis/correios-cep) projeto feito em Ruby
+Busca por CEP diretamente da API dos Correios.  
+Inspirado [nesse](https://github.com/prodis/correios-cep) projeto feito em Ruby.
 
 
 ## Instalação
@@ -48,10 +48,10 @@ $ npm i -S @tadashi/cep
 ## Uso
 
 ```js
-const consulta = require('@tadashi/cep');
+const consulta = require('@tadashi/cep')
 
-consulta('09715-295').then(r => {
-  console.log(r.end) // Rua Primo Modolin
+consulta('01311-922').then(r => {
+  console.log(r.end) // Avenida Paulista
 })
 ```
 
@@ -60,11 +60,11 @@ consulta('09715-295').then(r => {
 
 #### consulta(cep)
 
-Nome        | Tipo                 | Requerido | Default           | Descrição
------------ | -------------------- |:---------:|:-----------------:| ------------
-cep         | string \| number     | sim       | -                 | CEP para a consulta
+Nome   | Tipo     | Requerido  | Default   | Descrição
+------ | -------- |:----------:|:---------:| ------------
+cep    | string   | sim        | -         | CEP para a consulta
 
 
 ## License
 
-MIT © [Thiago Lagden](http://lagden.in)
+MIT © [Thiago Lagden](https://github.com/lagden)
