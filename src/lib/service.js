@@ -1,6 +1,6 @@
 'use strict'
 
-// const {inspect} = require('util')
+const {inspect} = require('util')
 const {createClientAsync} = require('soap')
 const CepError = require('./cep-error')
 const dict = require('./dict')
@@ -15,7 +15,7 @@ async function service(method, args) {
 	try {
 		const client = await createClientAsync(wsdl.producao)
 		const _response = await client[`${method}Async`](args, {method: 'POST'})
-		// console.log(inspect(_response, false, null, true))
+		console.log(inspect(_response, false, null, true))
 		const [{return: response}] = _response
 		response.success = true
 		response.status = 200
