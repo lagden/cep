@@ -1,5 +1,5 @@
 # APP DEV
-FROM node:14.0-alpine3.11
+FROM node:14.11-alpine3.12
 LABEL maintainer="docker@lagden.in"
 
 ARG PORT=3000

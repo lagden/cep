@@ -1,6 +1,6 @@
 {
   "name": "@tadashi/cep",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "description": "Busca por CEP diretamente da API dos Correios",
   "keywords": [
     "cep",
@@ -23,13 +23,29 @@
     "pretest": "xo",
     "test": "ava --serial -t",
     "precoverage": "npm run pretest",
-    "coverage": "nyc --reporter=text-summary --reporter=lcov ava",
+    "coverage": "nyc --reporter=text-summary --reporter=lcov ava --serial -t",
     "snyk-protect": "snyk protect",
     "prepare": "npm run snyk-protect"
   },
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=12.0.0"
   },
+  "main": "src/index.js",
+  "files": [
+    "src",
+    "license",
+    "readme.md"
+  ],
+  "dependencies": {
+    "soap": "0.33.0"
+  },
+  "devDependencies": {
+    "ava": "3.12.1",
+    "nyc": "15.1.0",
+    "snyk": "1.400.0",
+    "xo": "0.33.1"
+  },
+  "snyk": true,
   "xo": {
     "envs": [
       "node"
@@ -48,21 +64,5 @@
   },
   "ava": {
     "timeout": "30s"
-  },
-  "main": "src/index.js",
-  "files": [
-    "src",
-    "license",
-    "readme.md"
-  ],
-  "dependencies": {
-    "soap": "0.33.0"
-  },
-  "devDependencies": {
-    "ava": "3.12.1",
-    "nyc": "15.1.0",
-    "snyk": "1.398.1",
-    "xo": "0.33.1"
-  },
-  "snyk": true
+  }
 }

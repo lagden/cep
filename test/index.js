@@ -4,6 +4,13 @@ const test = require('ava')
 const cep = require('../src')
 const faultstring = require('../src/lib/faultstring')
 
+test('bairro', async t => {
+	const r = await cep('02226-040')
+	t.true(r.success)
+	t.is(r.status, 200)
+	t.is(r.bairro, 'Jardim Brasil (Zona Norte)')
+})
+
 test('cep', async t => {
 	const r = await cep('09715-295')
 	t.true(r.success)
