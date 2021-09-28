@@ -1,12 +1,16 @@
-version: '3.7'
+version: "3.7"
 services:
   app:
+    image: local/cep:test
     build:
       context: ./
+      target: dev
       args:
         NODE_ENV: development
-    image: local/cep:test
-    command: ["npm", "test"]
+    command: >
+      /bin/ash -c "
+        npm test
+      "
     volumes:
-      - ./src:/home/node/app/src
-      - ./test:/home/node/app/test
+      - .:/home/node/app
+      - /home/node/app/node_modules

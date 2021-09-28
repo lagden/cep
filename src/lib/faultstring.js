@@ -1,5 +1,3 @@
-'use strict'
-
 function faultstring(_error) {
 	let faultstring
 	try {
@@ -10,4 +8,4 @@ function faultstring(_error) {
 	return faultstring
 }
 
-module.exports = faultstring
+export default faultstring

@@ -1,22 +1,24 @@
-'use strict'
-
-// const {inspect} = require('util')
-const {createClientAsync} = require('soap')
-const CepError = require('./cep-error')
-const dict = require('./dict')
-const _faultstring = require('./faultstring')
+// import {inspect} from 'node:util'
+import {createClientAsync} from 'soap'
+import CepError from './cep-error.js'
+import dict from './dict.js'
+import _faultstring from './faultstring.js'
 
 const wsdl = {
 	sandbox: 'https://apphom.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl',
-	producao: 'https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl'
+	producao: 'https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl',
 }
 
 async function service(method, args) {
 	try {
 		const client = await createClientAsync(wsdl.producao)
+		// // Listener
+		// client
+		// 	.once('soapError', console.log)
+		// 	.once('response', console.log)
 		const _response = await client[`${method}Async`](args, {
 			method: 'POST',
-			timeout: 5000
+			timeout: 5000,
 		})
 		// console.log(inspect(_response, false, null, true))
 		const [{return: response}] = _response
@@ -32,4 +34,4 @@ async function service(method, args) {
 	}
 }
 
-module.exports = service
+export default service

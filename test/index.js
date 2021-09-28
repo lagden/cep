@@ -1,8 +1,6 @@
-'use strict'
-
-const test = require('ava')
-const cep = require('../src')
-const faultstring = require('../src/lib/faultstring')
+import test from 'ava'
+import cep from '../src/cep.js'
+import faultstring from '../src/lib/faultstring.js'
 
 test('bairro', async t => {
 	const r = await cep('02226-040')
@@ -19,7 +17,7 @@ test('cep', async t => {
 })
 
 test('number', async t => {
-	const r = await cep(70165900)
+	const r = await cep(70_165_900)
 	t.true(r.success)
 	t.is(r.status, 200)
 	t.is(r.end, 'Praça dos Três Poderes')

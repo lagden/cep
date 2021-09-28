@@ -1,5 +1,3 @@
-'use strict'
-
 class CepError extends Error {
 	constructor(message, {status, success}) {
 		super(message)
@@ -9,4 +7,4 @@ class CepError extends Error {
 	}
 }
 
-module.exports = CepError
+export default CepError

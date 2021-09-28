@@ -1,6 +1,6 @@
 {
   "name": "@tadashi/cep",
-  "version": "1.10.0",
+  "version": "2.0.0",
   "description": "Busca por CEP diretamente da API dos Correios",
   "keywords": [
     "cep",
@@ -20,49 +20,37 @@
   },
   "repository": "lagden/cep",
   "scripts": {
-    "pretest": "xo",
-    "test": "ava --serial -t",
-    "precoverage": "npm run pretest",
-    "coverage": "nyc --reporter=text-summary --reporter=lcov ava --serial -t",
+    "eslint": "eslint --config .eslintrc.yml --ext .js --ignore-path .gitignore .",
+    "pretest": "npm run eslint",
+    "test": "c8 --reporter=text --reporter=text-summary --reporter=lcov ava --tap",
     "snyk-protect": "snyk protect",
     "prepare": "npm run snyk-protect"
   },
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=14.16.0"
   },
-  "main": "src/index.js",
+  "type": "module",
+  "main": "src/cep.js",
   "files": [
     "src",
     "license",
     "readme.md"
   ],
   "dependencies": {
-    "soap": "0.35.0"
+    "soap": "0.42.0"
   },
   "devDependencies": {
+    "@babel/core": "7.15.5",
+    "@babel/eslint-parser": "7.15.7",
     "ava": "3.15.0",
-    "nyc": "15.1.0",
-    "snyk": "1.437.3",
-    "xo": "0.37.1"
+    "c8": "7.9.0",
+    "eslint": "7.32.0",
+    "eslint-config-xo": "0.38.0",
+    "eslint-plugin-unicorn": "36.0.0"
   },
   "snyk": true,
-  "xo": {
-    "envs": [
-      "node"
-    ],
-    "semicolon": false,
-    "rules": {
-      "padding-line-between-statements": 0,
-      "camelcase": [
-        "error",
-        {
-          "properties": "never"
-        }
-      ],
-      "capitalized-comments": 0
-    }
-  },
   "ava": {
     "timeout": "30s"
-  }
+  },
+  "babel": {}
 }

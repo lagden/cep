@@ -1,11 +1,4 @@
-/**
- * Consulta module.
- * @module consulta
- */
-
-'use strict'
-
-const service = require('./lib/service')
+import service from './lib/service.js'
 
 /**
  * Busca por CEP.
@@ -16,4 +9,4 @@ function consulta(cep) {
 	return service('consultaCEP', {cep})
 }
 
-module.exports = consulta
+export default consulta

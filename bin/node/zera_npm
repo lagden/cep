@@ -1,0 +1,26 @@
+#!/bin/sh
+
+DIR="$(cd $(dirname $0) && pwd)"
+BIN_DIR="$(cd $DIR/.. && pwd)"
+
+# Import functions
+. $BIN_DIR/helper/fn
+
+# Go to current directory
+CURR_FOLDER="$(pwd)"
+cd $CURR_FOLDER
+
+rm -rf \
+	"${CURR_FOLDER}/node_modules" \
+	"${CURR_FOLDER}/package-lock.json" \
+	"${CURR_FOLDER}/yarn.lock" \
+	"${CURR_FOLDER}/.yarn" \
+	"${CURR_FOLDER}/.pnp.*"
+
+npm install
+
+test $? -ne 0 && abort "npm failed" || ok "zerado..."
+
+npm audit
+
+exit 0
