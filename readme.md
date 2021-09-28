@@ -48,11 +48,10 @@ $ npm i -S @tadashi/cep
 ## Uso
 
 ```js
-const consulta = require('@tadashi/cep')
+import cep from '@tadashi/cep'
 
-consulta('01311-922').then(r => {
-  console.log(r.end) // Avenida Paulista
-})
+const response = await cep('01311-922')
+console.log(response.end) // Avenida Paulista
 ```
 
 
@@ -60,9 +59,9 @@ consulta('01311-922').then(r => {
 
 #### consulta(cep)
 
-Nome   | Tipo     | Requerido  | Default   | Descrição
------- | -------- |:----------:|:---------:| ------------
-cep    | string   | sim        | -         | CEP para a consulta
+Nome   | Tipo     | Descrição
+------ | -------- | ------------
+cep    | string   | CEP para a consulta
 
 
 ## License
