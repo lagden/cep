@@ -37,7 +37,7 @@
     "readme.md"
   ],
   "dependencies": {
-    "soap": "0.42.0"
+    "soap": "0.43.0"
   },
   "devDependencies": {
     "@babel/core": "7.15.5",
