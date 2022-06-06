@@ -15,12 +15,20 @@ async function service(method, args) {
 		// // Listener
 		// client
 		// 	.once('soapError', console.log)
-		// 	.once('response', console.log)
+		// 	.once('request', xml => {
+		// 		// console.log('request', xml)
+		// 		console.log('request', inspect(xml, false, undefined, true))
+		// 	})
+		// 	.once('response', body => {
+		// 		// console.log('response', body)
+		// 		console.log('response', inspect(body, false, undefined, true))
+		// 	})
+
 		const _response = await client[`${method}Async`](args, {
 			method: 'POST',
 			timeout: 5000,
 		})
-		// console.log(inspect(_response, false, null, true))
+		// console.log(inspect(_response, false, undefined, true))
 		const [{return: response}] = _response
 		response.success = true
 		response.status = 200

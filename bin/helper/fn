@@ -31,7 +31,7 @@ load_env() {
 gen_env() {
 	_DIR="$(cd $(dirname $0) && pwd)"
 	_BIN_DIR="$(cd $DIR/.. && pwd)"
-	GEN_ENV="${2:-$_BIN_DIR}/front/gen_env"
+	GEN_ENV="${2:-$_BIN_DIR}/node/envs.js"
 
 	if test -z $1; then
 		abort "Missing output"
