@@ -11,8 +11,6 @@
 [![NPM version][npm-img]][npm]
 [![Node.js CI][ci-img]][ci]
 [![Coverage Status][coveralls-img]][coveralls]
-[![Dependency Status][dep-img]][dep]
-[![devDependency Status][devDep-img]][devDep]
 
 [![XO code style][xo-img]][xo]
 [![Snyk badge][snyk-img]][snyk]
@@ -20,14 +18,10 @@
 
 [npm-img]:         https://img.shields.io/npm/v/@tadashi/cep.svg
 [npm]:             https://www.npmjs.com/package/@tadashi/cep
-[ci-img]:          https://github.com/lagden/cep/workflows/Node.js%20CI/badge.svg
-[ci]:              https://github.com/lagden/cep/actions?query=workflow%3A%22Node.js+CI%22
+[ci-img]:          https://github.com/lagden/cep/actions/workflows/nodejs.yml/badge.svg
+[ci]:              https://github.com/lagden/cep/actions/workflows/nodejs.yml
 [coveralls-img]:   https://coveralls.io/repos/github/lagden/cep/badge.svg?branch=master
 [coveralls]:       https://coveralls.io/github/lagden/cep?branch=master
-[dep-img]:         https://david-dm.org/lagden/cep.svg
-[dep]:             https://david-dm.org/lagden/cep
-[devDep-img]:      https://david-dm.org/lagden/cep/dev-status.svg
-[devDep]:          https://david-dm.org/lagden/cep#info=devDependencies
 [xo-img]:          https://img.shields.io/badge/code_style-XO-5ed9c7.svg
 [xo]:              https://github.com/sindresorhus/xo
 [snyk-img]:        https://snyk.io/test/github/lagden/cep/badge.svg
@@ -51,17 +45,29 @@ $ npm i -S @tadashi/cep
 import cep from '@tadashi/cep'
 
 const response = await cep('01311-922')
-console.log(response.end) // Avenida Paulista
+console.log(response.endereco) // Avenida Paulista
 ```
 
 
-### API
+## API
 
-#### consulta(cep)
+### consulta(cep: string): object
 
 Nome   | Tipo     | Descrição
 ------ | -------- | ------------
 cep    | string   | CEP para a consulta
+
+
+#### Response
+
+Nome        | Tipo
+------      | --------
+bairro      | string
+cep         | string
+cidade      | string
+complemento | string
+endereco    | string
+uf          | string
 
 
 ## License

@@ -23,7 +23,7 @@
     "eslint": "eslint --config .eslintrc.yml --ext .js --ignore-path .gitignore .",
     "pretest": "npm run eslint",
     "test": "c8 --reporter=text --reporter=text-summary --reporter=lcov ava --tap",
-    "snyk-protect": "snyk protect",
+    "snyk-protect": "snyk-protect",
     "prepare": "npm run snyk-protect"
   },
   "engines": {
