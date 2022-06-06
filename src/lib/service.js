@@ -1,43 +1,60 @@
 // import {inspect} from 'node:util'
-import {createClientAsync} from 'soap'
+import got from 'got'
+import {transform} from 'camaro'
 import CepError from './cep-error.js'
 import dict from './dict.js'
-import _faultstring from './faultstring.js'
 
 const wsdl = {
 	sandbox: 'https://apphom.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl',
 	producao: 'https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl',
 }
 
-async function service(method, args) {
+async function service(code) {
 	try {
-		const client = await createClientAsync(wsdl.producao)
-		// // Listener
-		// client
-		// 	.once('soapError', console.log)
-		// 	.once('request', xml => {
-		// 		// console.log('request', xml)
-		// 		console.log('request', inspect(xml, false, undefined, true))
-		// 	})
-		// 	.once('response', body => {
-		// 		// console.log('response', body)
-		// 		console.log('response', inspect(body, false, undefined, true))
-		// 	})
-
-		const _response = await client[`${method}Async`](args, {
-			method: 'POST',
-			timeout: 5000,
+		const xml = `<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://cliente.bean.master.sigep.bsb.correios.com.br/"><soap:Body><tns:consultaCEP><cep>${code}</cep></tns:consultaCEP></soap:Body></soap:Envelope>`
+		const response = await got.post(wsdl.producao, {
+			headers: {
+				'Content-Type': 'text/xml; charset=utf-8',
+				'User-Agent': '@tadashi/cep:2.1.0',
+				SOAPAction: '',
+			},
+			throwHttpErrors: false,
+			body: xml,
 		})
-		// console.log(inspect(_response, false, undefined, true))
-		const [{return: response}] = _response
-		response.success = true
-		response.status = 200
-		return response
+
+		const template = {
+			bairro: '//bairro',
+			cep: '//cep',
+			cidade: '//cidade',
+			complemento: '//complemento2',
+			endereco: '//end',
+			uf: '//uf',
+		}
+
+		const templateFault = {
+			falha: '//faultstring',
+		}
+
+		const dataFault = await transform(response.body, templateFault)
+		if (dataFault?.falha && dataFault.falha !== '') {
+			throw new Error(dataFault.falha)
+		}
+
+		const data = await transform(response.body, template)
+		return {
+			success: true,
+			status: 200,
+			...data,
+		}
 	} catch (error) {
-		const faultstring = _faultstring(error)
-		const r = dict.has(faultstring) && dict.get(faultstring)
-		const base = {success: false, status: 500, message: faultstring}
-		const data = {...base, ...r}
+		const r = dict.has(error.message) && dict.get(error.message)
+		const b = {
+			success: false,
+			status: 500,
+			message: error.message,
+			...r,
+		}
+		const data = {...b, ...r}
 		throw new CepError(data.message, data)
 	}
 }

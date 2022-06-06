@@ -6,7 +6,7 @@ import service from './lib/service.js'
  * @return {Object} Os dados do endereço.
  */
 function consulta(cep) {
-	return service('consultaCEP', {cep})
+	return service(cep)
 }
 
 export default consulta

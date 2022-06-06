@@ -1,6 +1,12 @@
 import test from 'ava'
 import cep from '../src/cep.js'
-import faultstring from '../src/lib/faultstring.js'
+
+test('cep', async t => {
+	const r = await cep('09715-295')
+	t.true(r.success)
+	t.is(r.status, 200)
+	t.is(r.endereco, 'Rua Primo Modolin')
+})
 
 test('bairro', async t => {
 	const r = await cep('02226-040')
@@ -9,18 +15,11 @@ test('bairro', async t => {
 	t.is(r.bairro, 'Jardim Brasil (Zona Norte)')
 })
 
-test('cep', async t => {
-	const r = await cep('09715-295')
-	t.true(r.success)
-	t.is(r.status, 200)
-	t.is(r.end, 'Rua Primo Modolin')
-})
-
 test('number', async t => {
 	const r = await cep(70_165_900)
 	t.true(r.success)
 	t.is(r.status, 200)
-	t.is(r.end, 'Praça dos Três Poderes')
+	t.is(r.endereco, 'Praça dos Três Poderes')
 })
 
 test('not found', async t => {
@@ -41,9 +40,4 @@ test('invalid', async t => {
 		t.is(error.status, 400)
 		t.is(error.message, 'CEP inválido')
 	}
-})
-
-test('faultstring', t => {
-	const _faultstring = faultstring(new Error('faultstring'))
-	t.is(_faultstring, 'faultstring')
 })
