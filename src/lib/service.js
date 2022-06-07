@@ -1,5 +1,6 @@
 // import {inspect} from 'node:util'
 import got from 'got'
+import hexID from '@tadashi/hex-id'
 import {transform} from 'camaro'
 import CepError from './cep-error.js'
 import dict from './dict.js'
@@ -10,6 +11,8 @@ const wsdl = {
 }
 
 async function service(code) {
+	const id = hexID()
+
 	try {
 		const xml = `<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://cliente.bean.master.sigep.bsb.correios.com.br/"><soap:Body><tns:consultaCEP><cep>${code}</cep></tns:consultaCEP></soap:Body></soap:Envelope>`
 		const response = await got.post(wsdl.producao, {
@@ -26,7 +29,9 @@ async function service(code) {
 			bairro: '//bairro',
 			cep: '//cep',
 			cidade: '//cidade',
-			complemento: '//complemento2',
+			complemento: '//complemento',
+			complemento2: '//complemento2',
+			end: '//end',
 			endereco: '//end',
 			uf: '//uf',
 		}
@@ -42,6 +47,7 @@ async function service(code) {
 
 		const data = await transform(response.body, template)
 		return {
+			id,
 			success: true,
 			status: 200,
 			...data,
@@ -49,6 +55,7 @@ async function service(code) {
 	} catch (error) {
 		const r = dict.has(error.message) && dict.get(error.message)
 		const b = {
+			id,
 			success: false,
 			status: 500,
 			message: error.message,

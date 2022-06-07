@@ -1,6 +1,6 @@
 {
   "name": "@tadashi/cep",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Busca por CEP diretamente da API dos Correios",
   "keywords": [
     "cep",
@@ -37,6 +37,7 @@
     "readme.md"
   ],
   "dependencies": {
+    "@tadashi/hex-id": "2.0.0",
     "camaro": "6.1.0",
     "got": "12.1.0"
   },
@@ -48,7 +49,7 @@
     "eslint": "8.17.0",
     "eslint-config-xo": "0.41.0",
     "eslint-plugin-unicorn": "42.0.0",
-    "@snyk/protect": "1.946.0"
+    "@snyk/protect": "1.947.0"
   },
   "snyk": true,
   "ava": {
