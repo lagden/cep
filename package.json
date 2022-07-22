@@ -38,7 +38,7 @@
   ],
   "dependencies": {
     "@tadashi/hex-id": "2.0.0",
-    "camaro": "6.1.0",
+    "camaro": "6.2.0",
     "got": "12.1.0"
   },
   "devDependencies": {
