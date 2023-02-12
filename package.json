@@ -39,7 +39,7 @@
   "dependencies": {
     "@tadashi/hex-id": "2.0.0",
     "camaro": "6.1.0",
-    "got": "12.1.0"
+    "got": "12.5.3"
   },
   "devDependencies": {
     "@babel/core": "7.18.2",
