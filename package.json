@@ -37,7 +37,7 @@
     "readme.md"
   ],
   "dependencies": {
-    "@tadashi/hex-id": "2.0.0",
+    "@tadashi/hex-id": "3.0.2",
     "camaro": "6.1.0",
     "got": "12.1.0"
   },
